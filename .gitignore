@@ -1,0 +1,24 @@
+```gitignore
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+.env/
+
+# Archivos de texto
+*.txt
+
+# IDEs / editores
+.vscode/
+.idea/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+```
+*.txt
