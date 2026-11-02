@@ -30,6 +30,8 @@ def encrypt():
     match methods_list.currentRow():
         case 0: 
             output_box.setPlainText(cesar(input_box.toPlainText()))
+        case 1:
+            output_box.setPlainText(vigenere(input_box.toPlainText()))
 
 
 def cesar(text):
@@ -44,6 +46,41 @@ def cesar(text):
         else:
             encrypted_text.append(text[i])
     return("".join(encrypted_text))
+def vigenere(text):
+    encrypted_text = []
+    x=0
+    for i in range(len(text)):
+        if(x >= len(key_vigenere.text())):
+            x = 0
+        if(97 <= ord(text[i]) <= 122):
+            encrypted_text.append(
+                chr(
+                    (
+                        (
+                            (ord(text[i]) - 97)
+                            + (ord(key_vigenere.text()[x].lower()) - 97)
+                        ) % 26
+                    ) +97
+                )
+            )
+            x += 1
+        elif(65 <= ord(text[i]) <= 90):
+            encrypted_text.append(
+                chr(
+                    (
+                        (
+                            (ord(text[i]) - 65)
+                            + (ord(key_vigenere.text()[x].upper()) - 65)
+                        ) % 26
+                    ) +65
+                )
+            )
+            x += 1
+        elif(text[i].isspace()):
+            encrypted_text.append(" ")
+        else:
+            encrypted_text.append(text[i])
+    print("".join(encrypted_text))
 # -------------------------------------------------------------------
 # CONFIGURACIÓN DE LA VENTANA
 # -------------------------------------------------------------------
